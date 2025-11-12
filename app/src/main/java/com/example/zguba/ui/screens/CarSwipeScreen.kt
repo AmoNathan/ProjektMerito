@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -15,22 +14,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.zguba.data.CarRepository
 import com.example.zguba.model.Car
-import com.example.zguba.repository.UserRepository
 import com.example.zguba.ui.components.SwipeableCard
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CarSwipeScreen(
-    userId: Long,
-    userRepository: UserRepository,
-    onLogout: () -> Unit
-) {
+fun CarSwipeScreen() {
     var cars by remember { mutableStateOf(CarRepository.getCars()) }
     var currentIndex by remember { mutableStateOf(0) }
-    val scope = rememberCoroutineScope()
-    
-    val likedCarCount by userRepository.getLikedCarCount(userId).collectAsState(initial = 0)
+    var likedCars by remember { mutableStateOf<List<Car>>(emptyList()) }
     
     val currentCar = if (currentIndex < cars.size) cars[currentIndex] else null
     
@@ -41,15 +32,7 @@ fun CarSwipeScreen(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                ),
-                actions = {
-                    IconButton(onClick = onLogout) {
-                        Icon(
-                            imageVector = Icons.Default.Logout,
-                            contentDescription = "Logout"
-                        )
-                    }
-                }
+                )
             )
         },
         bottomBar = {
@@ -87,10 +70,7 @@ fun CarSwipeScreen(
                     FloatingActionButton(
                         onClick = {
                             if (currentIndex < cars.size) {
-                                val car = cars[currentIndex]
-                                scope.launch {
-                                    userRepository.likeCar(userId, car)
-                                }
+                                likedCars = likedCars + cars[currentIndex]
                                 currentIndex++
                             }
                         },
@@ -149,9 +129,7 @@ fun CarSwipeScreen(
                         currentIndex++
                     },
                     onSwipeRight = {
-                        scope.launch {
-                            userRepository.likeCar(userId, currentCar)
-                        }
+                        likedCars = likedCars + currentCar
                         currentIndex++
                     },
                     modifier = Modifier.fillMaxWidth()
@@ -169,7 +147,7 @@ fun CarSwipeScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "You liked $likedCarCount car(s)",
+                        text = "You liked ${likedCars.size} car(s)",
                         style = MaterialTheme.typography.bodyLarge
                     )
                     Spacer(modifier = Modifier.height(24.dp))
@@ -177,6 +155,7 @@ fun CarSwipeScreen(
                         onClick = {
                             cars = CarRepository.getCars()
                             currentIndex = 0
+                            likedCars = emptyList()
                         }
                     ) {
                         Text("Start Over")
