@@ -1,5 +1,6 @@
 package com.example.zguba.database.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
@@ -18,6 +19,7 @@ import androidx.room.PrimaryKey
 data class LikedCar(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    @ColumnInfo(index = true)
     val userId: Long,
     val carId: String,
     val carMake: String,

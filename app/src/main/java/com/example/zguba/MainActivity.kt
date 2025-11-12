@@ -80,10 +80,6 @@ class MainActivity : ComponentActivity() {
                                     }
                             }
                         },
-                        onLogout = {
-                            currentUserId = null
-                            preferencesManager.clearUserId()
-                        },
                         loginError = loginError,
                         registerError = registerError
                     )

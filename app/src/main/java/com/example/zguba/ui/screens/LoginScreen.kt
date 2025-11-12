@@ -18,6 +18,7 @@ fun LoginScreen(
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
+    var validationError by remember { mutableStateOf<String?>(null) }
     
     // Update loading state when error changes
     LaunchedEffect(errorMessage) {
@@ -76,9 +77,10 @@ fun LoginScreen(
                 singleLine = true
             )
             
-            if (errorMessage != null) {
+            val displayError = errorMessage ?: validationError
+            if (displayError != null) {
                 Text(
-                    text = errorMessage!!,
+                    text = displayError,
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
@@ -86,8 +88,9 @@ fun LoginScreen(
             
             Button(
                 onClick = {
+                    validationError = null
                     if (username.isBlank() || password.isBlank()) {
-                        // Show validation error
+                        validationError = "Please fill in all fields"
                     } else {
                         isLoading = true
                         onLogin(username, password)
