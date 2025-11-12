@@ -22,6 +22,7 @@ fun NavGraph(
     onRegister: (String, String, String) -> Unit,
     currentUserId: Long?,
     userRepository: com.example.zguba.repository.UserRepository,
+    onLogout: () -> Unit,
     loginError: String?,
     registerError: String?
 ) {
@@ -71,7 +72,13 @@ fun NavGraph(
             if (currentUserId != null) {
                 CarSwipeScreen(
                     userId = currentUserId,
-                    userRepository = userRepository
+                    userRepository = userRepository,
+                    onLogout = {
+                        onLogout()
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 )
             }
         }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +23,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun CarSwipeScreen(
     userId: Long,
-    userRepository: UserRepository
+    userRepository: UserRepository,
+    onLogout: () -> Unit
 ) {
     var cars by remember { mutableStateOf(CarRepository.getCars()) }
     var currentIndex by remember { mutableStateOf(0) }
@@ -39,7 +41,15 @@ fun CarSwipeScreen(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+                ),
+                actions = {
+                    IconButton(onClick = onLogout) {
+                        Icon(
+                            imageVector = Icons.Default.Logout,
+                            contentDescription = "Logout"
+                        )
+                    }
+                }
             )
         },
         bottomBar = {
