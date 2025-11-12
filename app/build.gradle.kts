@@ -54,10 +54,17 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.androidx.navigation.compose)
     
-    // Room
+    // Room (keeping for local liked cars cache if needed)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    
+    // Retrofit for API calls
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.gson)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
