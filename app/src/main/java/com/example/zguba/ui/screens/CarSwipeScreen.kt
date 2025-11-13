@@ -53,7 +53,7 @@ fun CarSwipeScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Car Swiper") },
+                title = { Text("Car Match") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
