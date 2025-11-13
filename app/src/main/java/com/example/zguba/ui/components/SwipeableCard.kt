@@ -42,9 +42,9 @@ fun SwipeableCard(
     onSwipeRight: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var offsetX by remember { mutableStateOf(0f) }
-    var offsetY by remember { mutableStateOf(0f) }
-    var isSwiping by remember { mutableStateOf(false) }
+    var offsetX by remember(car.id) { mutableStateOf(0f) }
+    var offsetY by remember(car.id) { mutableStateOf(0f) }
+    var isSwiping by remember(car.id) { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     
     val rotation by animateFloatAsState(
@@ -86,7 +86,7 @@ fun SwipeableCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(600.dp)
-                .pointerInput(Unit) {
+                .pointerInput(car.id) {
                     detectDragGestures(
                         onDragStart = {
                             isSwiping = true

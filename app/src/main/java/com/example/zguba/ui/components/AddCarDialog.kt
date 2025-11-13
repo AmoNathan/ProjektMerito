@@ -10,7 +10,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,14 +34,13 @@ fun AddCarDialog(
     var price by remember { mutableStateOf("") }
     var imageUrl by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
-    var canSubmit by remember { mutableStateOf(false) }
-
-    LaunchedEffect(make, model, year, price, imageUrl) {
-        canSubmit = make.isNotBlank() &&
-            model.isNotBlank() &&
-            year.toIntOrNull() != null &&
-            price.toIntOrNull() != null &&
-            imageUrl.isNotBlank()
+    
+    val canSubmit = remember(make, model, year, price, imageUrl) {
+        make.isNotBlank() &&
+        model.isNotBlank() &&
+        year.toIntOrNull() != null &&
+        price.toIntOrNull() != null &&
+        imageUrl.isNotBlank()
     }
 
     AlertDialog(

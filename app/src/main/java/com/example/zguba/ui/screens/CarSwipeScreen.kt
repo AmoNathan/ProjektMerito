@@ -38,8 +38,7 @@ fun CarSwipeScreen() {
         isLoading = true
         errorMessage = null
         try {
-            val loadedCars = CarRepository.getCars(context)
-            cars = loadedCars
+            cars = CarRepository.getCars(context)
             currentIndex = 0
             likedCars = emptyList()
         } catch (exception: Exception) {
@@ -140,45 +139,45 @@ fun CarSwipeScreen() {
                     }
                 }
                 currentCar != null -> {
-                // Show next 2 cards in stack for depth effect
-                if (currentIndex + 1 < cars.size) {
+                    // Show next 2 cards in stack for depth effect
+                    if (currentIndex + 1 < cars.size) {
+                        SwipeableCard(
+                            car = cars[currentIndex + 1],
+                            onSwipeLeft = {},
+                            onSwipeRight = {},
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .offset(y = 8.dp)
+                                .scale(0.95f)
+                                .alpha(0.7f)
+                        )
+                    }
+                    
+                    if (currentIndex + 2 < cars.size) {
+                        SwipeableCard(
+                            car = cars[currentIndex + 2],
+                            onSwipeLeft = {},
+                            onSwipeRight = {},
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .offset(y = 16.dp)
+                                .scale(0.9f)
+                                .alpha(0.5f)
+                        )
+                    }
+                    
+                    // Current card on top
                     SwipeableCard(
-                        car = cars[currentIndex + 1],
-                        onSwipeLeft = {},
-                        onSwipeRight = {},
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .offset(y = 8.dp)
-                            .scale(0.95f)
-                            .alpha(0.7f)
+                        car = currentCar,
+                        onSwipeLeft = {
+                            currentIndex++
+                        },
+                        onSwipeRight = {
+                            likedCars = likedCars + currentCar
+                            currentIndex++
+                        },
+                        modifier = Modifier.fillMaxWidth()
                     )
-                }
-                
-                if (currentIndex + 2 < cars.size) {
-                    SwipeableCard(
-                        car = cars[currentIndex + 2],
-                        onSwipeLeft = {},
-                        onSwipeRight = {},
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .offset(y = 16.dp)
-                            .scale(0.9f)
-                            .alpha(0.5f)
-                    )
-                }
-                
-                // Current card on top
-                SwipeableCard(
-                    car = currentCar,
-                    onSwipeLeft = {
-                        currentIndex++
-                    },
-                    onSwipeRight = {
-                        likedCars = likedCars + currentCar
-                        currentIndex++
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                )
                 }
                 else -> {
                     // No more cars
