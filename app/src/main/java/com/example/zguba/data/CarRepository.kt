@@ -8,8 +8,31 @@ import com.example.zguba.model.Car
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/**
+ * CarRepository: Data access layer for car information
+ * 
+ * Purpose:
+ * - Abstracts database operations from UI components
+ * - Provides simple API for getting and adding cars
+ * - Handles database seeding (initial data population)
+ * - Converts between domain models (Car) and database entities (CarEntity)
+ * 
+ * Pattern: Repository Pattern
+ * - UI components don't know about database implementation
+ * - All database access goes through this repository
+ * - Easy to change storage mechanism without affecting UI
+ */
 object CarRepository {
 
+    /**
+     * Seed Cars: Default cars to populate database on first launch
+     * 
+     * These 10 example cars are inserted into the database when:
+     * - App is launched for the first time
+     * - Database is empty
+     * 
+     * After seeding, users can add their own cars which are stored alongside these
+     */
     private val seedCars = listOf(
         Car(
             id = "1",
@@ -103,21 +126,76 @@ object CarRepository {
         )
     )
 
+    /**
+     * Helper Function: Get database DAO (Data Access Object)
+     * 
+     * Steps:
+     * 1. Get singleton database instance
+     * 2. Return the CarDao interface for database operations
+     * 
+     * @param context: Android context needed to access database
+     * @return CarDao: Interface for car database operations
+     */
     private fun dao(context: Context) = CarDatabase.getInstance(context).carDao()
 
+    /**
+     * Get Cars: Retrieve all cars from database
+     * 
+     * Flow:
+     * 1. Run on background thread (Dispatchers.IO) to avoid blocking UI
+     * 2. Get DAO from database
+     * 3. Query database for all stored cars
+     * 4. If database has cars:
+     *    - Convert CarEntity objects to Car domain objects
+     *    - Return the list
+     * 5. If database is empty:
+     *    - Convert seed cars to CarEntity objects
+     *    - Insert them into database (upsert = insert or update)
+     *    - Return the seed cars list
+     * 
+     * @param context: Android context for database access
+     * @return List<Car>: All cars from database (or seed cars if empty)
+     */
     suspend fun getCars(context: Context): List<Car> = withContext(Dispatchers.IO) {
+        // Get database access object
         val carDao = dao(context)
+        
+        // Query database for all cars
         val stored = carDao.getCars()
+        
+        // If database has cars, return them (converted to domain objects)
         if (stored.isNotEmpty()) {
             return@withContext stored.map { it.toDomain() }
         }
 
+        // Database is empty: Seed with default cars
+        // Convert Car objects to CarEntity objects and insert into database
         carDao.upsertCars(seedCars.map { it.toEntity() })
+        
+        // Return the seed cars (they're now in database for next time)
         seedCars
     }
 
+    /**
+     * Add Car: Save a new car to the database
+     * 
+     * Flow:
+     * 1. Run on background thread (Dispatchers.IO) to avoid blocking UI
+     * 2. Get DAO from database
+     * 3. Convert Car domain object to CarEntity database object
+     * 4. Insert or update car in database (upsert)
+     *    - If car with same ID exists, update it
+     *    - If car doesn't exist, insert it
+     * 
+     * @param context: Android context for database access
+     * @param car: Car object to save to database
+     */
     suspend fun addCar(context: Context, car: Car) = withContext(Dispatchers.IO) {
+        // Get database access object
         val carDao = dao(context)
+        
+        // Convert Car to CarEntity and save to database
+        // upsertCar handles both insert (new) and update (existing) cases
         carDao.upsertCar(car.toEntity())
     }
 }

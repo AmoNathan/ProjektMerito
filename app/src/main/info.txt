@@ -1,0 +1,39 @@
+Files updated with comments
+CarSwipeScreen.kt — Main screen
+State management
+Data loading flow
+UI states (loading, error, cards, empty)
+Button actions
+Dialog handling
+SwipeableCard.kt — Swipeable card component
+State management (keyed to car.id)
+Animation calculations (rotation, alpha, scale)
+Gesture detection and handling
+Visual overlays (like/dislike)
+Card content rendering
+AddCarDialog.kt — Add car dialog
+Form state management
+Real-time validation
+Submit handling
+Field descriptions
+CarRepository.kt — Data repository
+Repository pattern explanation
+Database seeding logic
+Data loading flow
+Car addition flow
+CarEntity.kt — Database entity
+Entity structure
+Conversion functions (toDomain/toEntity)
+CarDao.kt — Data Access Object
+SQL query explanations
+Upsert operations
+Database operations
+CarDatabase.kt — Database class
+Singleton pattern
+Database initialization
+Thread safety
+All files now include comments explaining:
+What each section does
+Why it's needed
+How data flows
+Step-by-step processes
