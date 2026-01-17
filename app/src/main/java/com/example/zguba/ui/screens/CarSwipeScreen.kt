@@ -139,7 +139,7 @@ fun CarSwipeScreen() {
                     }
                 }
                 currentCar != null -> {
-                    // Show next 2 cards in stack for depth effect
+                    // Show next card
                     if (currentIndex + 1 < cars.size) {
                         SwipeableCard(
                             car = cars[currentIndex + 1],
@@ -152,19 +152,7 @@ fun CarSwipeScreen() {
                                 .alpha(0.7f)
                         )
                     }
-                    
-                    if (currentIndex + 2 < cars.size) {
-                        SwipeableCard(
-                            car = cars[currentIndex + 2],
-                            onSwipeLeft = {},
-                            onSwipeRight = {},
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .offset(y = 16.dp)
-                                .scale(0.9f)
-                                .alpha(0.5f)
-                        )
-                    }
+
                     
                     // Current card on top
                     SwipeableCard(

@@ -13,12 +13,12 @@ object CarRepository {
     private val seedCars = listOf(
         Car(
             id = "1",
-            make = "Tesla",
-            model = "Model S",
+            make = "BMW",
+            model = "M4",
             year = 2023,
             price = 89990,
             imageUrl = "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&auto=format&fit=crop",
-            description = "Electric luxury sedan with autopilot"
+            description = ""
         ),
         Car(
             id = "2",
@@ -40,8 +40,8 @@ object CarRepository {
         ),
         Car(
             id = "4",
-            make = "Porsche",
-            model = "911",
+            make = "Ferrari",
+            model = "F8",
             year = 2024,
             price = 114400,
             imageUrl = "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=800&auto=format&fit=crop",
@@ -53,7 +53,7 @@ object CarRepository {
             model = "R8",
             year = 2023,
             price = 169900,
-            imageUrl = "https://images.unsplash.com/photo-1606664515524-ed2f786a0ad6?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1610880846497-7257b23f6138?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "Supercar with V10 engine"
         ),
         Car(
@@ -62,7 +62,7 @@ object CarRepository {
             model = "F8 Tributo",
             year = 2024,
             price = 276000,
-            imageUrl = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1730110206438-84d983766aa1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "Italian supercar masterpiece"
         ),
         Car(
@@ -71,7 +71,7 @@ object CarRepository {
             model = "Huracán",
             year = 2023,
             price = 208571,
-            imageUrl = "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1621285853634-713b8dd6b5fd?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "Exotic supercar with aggressive design"
         ),
         Car(
@@ -80,7 +80,7 @@ object CarRepository {
             model = "Mustang GT",
             year = 2024,
             price = 42995,
-            imageUrl = "https://images.unsplash.com/photo-1606664515524-ed2f786a0ad6?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1597274324473-c3ced481af9c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "American muscle car classic"
         ),
         Car(
@@ -89,7 +89,7 @@ object CarRepository {
             model = "Corvette",
             year = 2024,
             price = 65995,
-            imageUrl = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1611367687299-3bc21f590b3d?q=80&w=698&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "Mid-engine American sports car"
         ),
         Car(
@@ -98,7 +98,7 @@ object CarRepository {
             model = "GT-R",
             year = 2023,
             price = 113540,
-            imageUrl = "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&auto=format&fit=crop",
+            imageUrl = "https://images.unsplash.com/photo-1611859266238-4b98091d9d9b?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description = "Godzilla - Japanese supercar"
         )
     )
