@@ -9,22 +9,22 @@ Celem naszego projektu jest nauczenie się programowania aplikacji mobilnych na 
 
 ## Funkcjonalności podstawowe:
 
-Przeglądanie samochodów – wyświetlanie zdjęć samochodów w formie kart (interfejs podobny do Tindera). 
+[x] Przeglądanie samochodów – wyświetlanie zdjęć samochodów w formie kart (interfejs podobny do Tindera). 
 
-System reakcji za pomocą przycisków. Opcja polubienia samochodu lub odrzucenia. 
+[x] System reakcji za pomocą przycisków. Opcja polubienia samochodu lub odrzucenia. 
 
-Logowanie i rejestracja użytkownika – tworzenie konta oraz logowanie (np. e-mail/hasło lub logowanie społecznościowe). 
+[ ]Logowanie i rejestracja użytkownika – tworzenie konta oraz logowanie (np. e-mail/hasło lub logowanie społecznościowe). 
 
-Dodawanie zdjęć samochodów – użytkownik może dodawać własne zdjęcia pojazdów do bazy. Baza hostowana na jakimś darmowym hostingu. 
+[x] Dodawanie zdjęć samochodów – użytkownik może dodawać własne zdjęcia pojazdów do bazy. Baza hostowana na jakimś darmowym hostingu. 
 
-Licznik polubień – wyświetlanie liczby polubień danego samochodu (np. „Twój samochód ma 15 polubień”). 
+[ ] Licznik polubień – wyświetlanie liczby polubień danego samochodu (np. „Twój samochód ma 15 polubień”). 
 
 
 ## Funkcjonalności opcjonalne / dalszy rozwój:
 
-Profil użytkownika z listą jego samochodów. 
+[ ] Profil użytkownika z listą jego samochodów. 
 
-Mechanizm przesuwania kart – realizacja animacji przesuwania zdjęć samochodów w lewo/prawo. 
+[x] Mechanizm przesuwania kart – realizacja animacji przesuwania zdjęć samochodów w lewo/prawo. 
 
 ## Dlaczego taka aplikacja?
 
