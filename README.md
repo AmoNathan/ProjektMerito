@@ -28,4 +28,4 @@ Celem naszego projektu jest nauczenie się programowania aplikacji mobilnych na 
 
 ## Dlaczego taka aplikacja?
 
-Wybraliśmy temat „tindera na samochody”, bo po prostu lubimy auta i uznaliśmy, że fajnie byłoby połączyć to z nauką robienia aplikacji mobilnych. Filip ma sporo swoich zdjęć samochodów, więc to też dobra okazja, żeby je wykorzystać. Poza tym ciekawiło nas, jak tworzy się apki z takim systemem „przesuwania” i dopasowywania – więc to połączenie pasji i nauki w jednym. 
+Wybraliśmy temat „tindera na samochody”, bo po prostu lubimy auta i uznaliśmy, że fajnie byłoby połączyć to z nauką robienia aplikacji mobilnych. Filip ma sporo swoich zdjęć samochodów, więc to też dobra okazja, żeby je wykorzystać. Poza tym ciekawiło nas, jak tworzy się apki z takim systemem „przesuwania” i dopasowywania – więc to połączenie pasji i nauki w jednym.  
