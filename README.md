@@ -13,18 +13,19 @@ Celem naszego projektu jest nauczenie się programowania aplikacji mobilnych na 
 
 [x]  System reakcji za pomocą przycisków. Opcja polubienia samochodu lub odrzucenia. 
 
-[ ]  Logowanie i rejestracja użytkownika – tworzenie konta oraz logowanie (np. e-mail/hasło lub logowanie społecznościowe). 
-
 [x]  Dodawanie zdjęć samochodów – użytkownik może dodawać własne zdjęcia pojazdów do bazy. Baza hostowana na jakimś darmowym hostingu. 
 
-[ ]  Licznik polubień – wyświetlanie liczby polubień danego samochodu (np. „Twój samochód ma 15 polubień”). 
+[x]  Mechanizm przesuwania kart – realizacja animacji przesuwania zdjęć samochodów w lewo/prawo. 
 
 
 ## Funkcjonalności opcjonalne / dalszy rozwój:
 
 [ ]  Profil użytkownika z listą jego samochodów. 
 
-[x]  Mechanizm przesuwania kart – realizacja animacji przesuwania zdjęć samochodów w lewo/prawo. 
+[ ]  Licznik polubień – wyświetlanie liczby polubień danego samochodu (np. „Twój samochód ma 15 polubień”). 
+
+[ ]  Logowanie i rejestracja użytkownika – tworzenie konta oraz logowanie (np. e-mail/hasło lub logowanie społecznościowe).
+
 
 ## Dlaczego taka aplikacja?
 
