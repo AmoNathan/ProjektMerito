@@ -41,6 +41,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.material.icons.filled.Warning
 import coil.compose.AsyncImage
 import com.example.zguba.model.Car
 import kotlinx.coroutines.delay
@@ -150,7 +152,9 @@ fun SwipeableCard(
                         model = car.imageUrl,
                         contentDescription = "${car.make} ${car.model}",
                         modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
+                        error = rememberVectorPainter(Icons.Default.Warning),
+                        placeholder = rememberVectorPainter(Icons.Default.Favorite)
                     )
 
                     // Gradient overlay at bottom
