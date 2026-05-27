@@ -1,6 +1,5 @@
 package com.example.zguba.data
 
-import android.content.Context
 import com.example.zguba.model.Car
 import com.example.zguba.remote.CarApiService
 import retrofit2.Retrofit
@@ -18,16 +17,16 @@ object CarRepository {
 
     private val api = retrofit.create(CarApiService::class.java)
 
-    suspend fun getCars(context: Context): List<Car> {
+    suspend fun getCars(): List<Car> {
         return try {
             api.getCars()
         } catch (e: Exception) {
             e.printStackTrace()
-            emptyList() // W razie błędu zwracamy pustą listę
+            emptyList()
         }
     }
 
-    suspend fun addCar(context: Context, car: Car) {
+    suspend fun addCar(car: Car) {
         try {
             api.addCar(car)
         } catch (e: Exception) {

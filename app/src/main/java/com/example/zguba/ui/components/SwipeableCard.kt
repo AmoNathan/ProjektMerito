@@ -60,7 +60,6 @@ fun SwipeableCard(
     key(car.id) {
         var offsetX by remember { mutableStateOf(0f) }
         var offsetY by remember { mutableStateOf(0f) }
-        var isSwiping by remember { mutableStateOf(false) }
         val scope = rememberCoroutineScope()
 
         val rotation by animateFloatAsState(
@@ -104,11 +103,7 @@ fun SwipeableCard(
                     .height(600.dp)
                     .pointerInput(Unit) {
                         detectDragGestures(
-                            onDragStart = {
-                                isSwiping = true
-                            },
                             onDragEnd = {
-                                isSwiping = false
                                 val threshold = 200f
                                 when {
                                     offsetX > threshold -> {
@@ -187,7 +182,7 @@ fun SwipeableCard(
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "$${String.format("%,d", car.price)}",
+                            text = "$${String.format(java.util.Locale.US, "%,d", car.price)}",
                             style = MaterialTheme.typography.titleLarge,
                             color = Color.White,
                             fontWeight = FontWeight.SemiBold

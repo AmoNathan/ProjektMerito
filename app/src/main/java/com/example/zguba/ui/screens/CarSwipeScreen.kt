@@ -12,7 +12,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.platform.LocalContext
 import com.example.zguba.data.CarRepository
 import com.example.zguba.model.Car
 import com.example.zguba.ui.components.AddCarDialog
@@ -22,7 +21,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CarSwipeScreen() {
-    val context = LocalContext.current
     var cars by remember { mutableStateOf<List<Car>>(emptyList()) }
     var currentIndex by remember { mutableStateOf(0) }
     var likedCars by remember { mutableStateOf<List<Car>>(emptyList()) }
@@ -38,7 +36,7 @@ fun CarSwipeScreen() {
         isLoading = true
         errorMessage = null
         try {
-            cars = CarRepository.getCars(context)
+            cars = CarRepository.getCars()
             currentIndex = 0
             likedCars = emptyList()
         } catch (exception: Exception) {
@@ -213,7 +211,7 @@ fun CarSwipeScreen() {
                     isSavingCar = true
                     addCarError = null
                     try {
-                        CarRepository.addCar(context, car)
+                        CarRepository.addCar(car)
                         showAddDialog = false
                         reloadKey += 1
                     } catch (exception: Exception) {
