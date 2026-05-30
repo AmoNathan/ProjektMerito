@@ -1,6 +1,7 @@
 package com.example.zguba.remote
 
 import com.example.zguba.model.Car
+import com.example.zguba.model.User
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -11,4 +12,7 @@ interface CarApiService {
 
     @POST("cars")
     suspend fun addCar(@Body car: Car): Car
+
+    @POST("login")
+    suspend fun login(@Body credentials: Map<String, String>): User
 }

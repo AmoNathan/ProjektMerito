@@ -185,12 +185,16 @@ fun CarSwipeScreen() {
                         Button(onClick = { reloadKey += 1 }) {
                             Text("Start Over")
                         }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Button(onClick = {
-                            showAddDialog = true
-                            addCarError = null
-                        }) {
-                            Text("Add Your Car")
+                        
+                        // TYLKO ADMIN może dodawać auta
+                        if (CarRepository.currentUser?.role == "ADMIN") {
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Button(onClick = {
+                                showAddDialog = true
+                                addCarError = null
+                            }) {
+                                Text("Add Your Car (Admin)")
+                            }
                         }
                     }
                 }
